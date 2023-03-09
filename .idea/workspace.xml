@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="73cf1c48-0b8c-495a-9f0d-da7af95e507f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/config/InterceptorConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/config/Knife4jConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/config/MinIOConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/controller/BaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/controller/FanController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/controller/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/controller/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/controller/PassportController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/controller/UserInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/controller/VlogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/interceptor/PassportInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/java/org/example/mufiye/interceptor/UserTokenInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-api/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/enums/FileTypeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/enums/Sex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/enums/UserInfoModifyType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/enums/YesOrNo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/exception/GraceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/exception/GraceExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/exception/MyCustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/result/GraceJSONResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/result/ResponseStatusEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/DateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/DesensitizationUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/IPUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/MinIOUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/PagedGridResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/RedisOperator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/SMSUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/java/org/example/mufiye/utils/TencentCloudProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-common/src/main/resources/tencentcloud.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper/CommentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper/DyUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper/FanMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper/FanMapperCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper/MyLikedVlogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper/VlogMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper/VlogMapperCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/my/mapper/MyMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper/CommentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper/DyUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper/FanMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper/FanMapperCustom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper/MyLikedVlogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper/VlogMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper/VlogMapperCustom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/bo/RegisterLoginBo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/bo/UpdatedDyUserBo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/bo/VlogBo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/pojo/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/pojo/DyUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/pojo/Fan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/pojo/MyLikedVlog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/pojo/Vlog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/vo/DyUserVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/vo/FanVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/vo/IndexVlogVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/vo/VlogerVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/src/main/java/org/example/mufiye/base/BaseInfoProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/src/main/java/org/example/mufiye/service/FanService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/src/main/java/org/example/mufiye/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/src/main/java/org/example/mufiye/service/VlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/src/main/java/org/example/mufiye/serviceImpl/FanServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/src/main/java/org/example/mufiye/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/douyin-service/src/main/java/org/example/mufiye/serviceImpl/VlogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-generator-for-douyin/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-generator-for-douyin/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-generator-for-douyin/src/main/java/org/example/mufiye/DouyinGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis-generator-for-douyin/src/main/java/org/example/mufiye/my/mapper/MyMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="mybatis-mapper" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="/usr/local/apache-maven-3.8.6" />
+        <option name="userSettingsFile" value="/usr/local/apache-maven-3.8.6/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2MdpvxAiEig0xLbvoQimdAbn2UU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "/Users/mufiye/mufiye_mini-douyin/douyin-mapper/src/main/resources/mapper",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "spring.configuration.checksum": "3b81a93d9c386b2033e62935a6816457"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/douyin-mapper/src/main/resources/mapper" />
+      <recent name="$PROJECT_DIR$/douyin-model/src/main/java/org/example/mufiye/pojo" />
+      <recent name="$PROJECT_DIR$/douyin-mapper/src/main/java/org/example/mufiye/mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.mufiye.my.mapper" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application">
+    <configuration name="DouyinGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.mufiye.DouyinGenerator" />
+      <module name="mybatis-generator-for-douyin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.mufiye.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ENABLE_JMX_AGENT" value="false" />
+      <option name="ENABLE_LAUNCH_OPTIMIZATION" value="false" />
+      <module name="douyin-api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.mufiye.Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.mufiye.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.DouyinGenerator" />
+      <item itemvalue="Spring Boot.Application" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="Application.DouyinGenerator" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="73cf1c48-0b8c-495a-9f0d-da7af95e507f" name="Changes" comment="" />
+      <created>1678107547674</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678107547674</updated>
+      <workItem from="1678107548975" duration="1441000" />
+      <workItem from="1678108996558" duration="10593000" />
+      <workItem from="1678154610026" duration="5923000" />
+      <workItem from="1678164313265" duration="23313000" />
+      <workItem from="1678198258875" duration="894000" />
+      <workItem from="1678199236096" duration="43260000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

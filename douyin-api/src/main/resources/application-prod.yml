@@ -1,0 +1,15 @@
+server:
+  port: 8199
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: -1   # tomcat默认的文件大小为2M，超过2M不会被捕获
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+logging:
+  level:
+    root: info

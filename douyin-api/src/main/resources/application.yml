@@ -1,0 +1,31 @@
+server:
+  port: 8099
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: -1   # tomcat默认的文件大小为2M，超过2M不会被捕获
+
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+mybatis:
+  type-aliases-package: org.example.mufiye.pojo
+  mapper-locations: classpath:mapper/*.xml
+
+mapper:
+  mappers: org.example.mufiye.my.mapper.MyMapper
+  not-empty: false
+  identity: MYSQL
+
+# 用于分页
+pagehelper:
+  helper-dialect: MYSQL
+  support-methods-arguments: true
+
+logging:
+  level:
+    root: debug
