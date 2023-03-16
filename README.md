@@ -4,7 +4,7 @@
 
 ## 后端接口展示
 
-该项目使用[knife4j](https://doc.xiaominfo.com/)这个API文档工具，这是部分API的展示，完整的API可以参考[markdown格式的API文档](mini-douyin-api)。
+该项目使用[knife4j](https://doc.xiaominfo.com/)这个API文档工具，这是部分API的展示，完整的API可以参考[markdown格式的API文档](mini-douyin-api.md)。
 
 ![API展示](./images/mini-douyin-api.png)
 
