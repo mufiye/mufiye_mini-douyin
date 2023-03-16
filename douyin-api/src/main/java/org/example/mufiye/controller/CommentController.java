@@ -2,6 +2,9 @@ package org.example.mufiye.controller;
 
 import com.tencentcloudapi.mrs.v20200910.models.BaseInfo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.Valid;
@@ -40,6 +43,10 @@ public class CommentController extends BaseInfoProperties {
     @Autowired
     private VlogService vlogService;
 
+    @ApiOperation("创建评论")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "commentBo", value = "评论信息", required = true, paramType = "body", dataType="CommentBo")
+    })
     @PostMapping("create")
     public GraceJSONResult create(@RequestBody @Valid CommentBo commentBo) throws Exception {
         // 返回最新的一条记录
@@ -47,6 +54,10 @@ public class CommentController extends BaseInfoProperties {
         return GraceJSONResult.ok(commentVo);
     }
 
+    @ApiOperation("获取某个视频的评论数")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "vlogId", value = "视频id", required = true, paramType = "query", dataType="String")
+    })
     @GetMapping("counts")
     public GraceJSONResult commentCounts(@RequestParam String vlogId) {
         String countsStr = redis.get(REDIS_VLOG_COMMENT_COUNTS+":"+vlogId);
@@ -56,6 +67,13 @@ public class CommentController extends BaseInfoProperties {
         return GraceJSONResult.ok(Integer.valueOf(countsStr));
     }
 
+    @ApiOperation("查询我的粉丝列表")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "vlogId", value = "视频id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "userId", value = "用户id", required = false, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "page", value = "页号", required = true, paramType = "query", dataType = "Integer"),
+        @ApiImplicitParam(name = "pageSize", value = "页面条目数", required = true, paramType = "query", dataType = "Integer")
+    })
     @GetMapping("list")
     public GraceJSONResult getCommentList(@RequestParam String vlogId,
                             @RequestParam(defaultValue = "") String userId,
@@ -65,6 +83,12 @@ public class CommentController extends BaseInfoProperties {
         return GraceJSONResult.ok(commentService.queryVlogComments(vlogId, userId, page, pageSize));
     }
 
+    @ApiOperation("删除某条评论")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "commentUserId", value = "评论用户的id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "commentId", value = "评论id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "vlogId", value = "视频id", required = true, paramType = "query", dataType = "String")
+    })
     @DeleteMapping("delete")
     public GraceJSONResult deleteComment(@RequestParam String commentUserId,
                                   @RequestParam String commentId,
@@ -73,6 +97,11 @@ public class CommentController extends BaseInfoProperties {
         return GraceJSONResult.ok();
     }
 
+    @ApiOperation("点赞某条评论")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "commentId", value = "评论id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType="String")
+    })
     @PostMapping("like")
     public GraceJSONResult like(@RequestParam String commentId,
                                 @RequestParam String userId) {
@@ -98,6 +127,11 @@ public class CommentController extends BaseInfoProperties {
         return GraceJSONResult.ok();
     }
 
+    @ApiOperation("取消点赞某条评论")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "commentId", value = "评论id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType="String")
+    })
     @PostMapping("unlike")
     public GraceJSONResult unlike(@RequestParam String commentId,
                                 @RequestParam String userId) {

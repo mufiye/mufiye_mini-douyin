@@ -16,7 +16,7 @@ public class Knife4jConfig {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
             .apiInfo(new ApiInfoBuilder()
                          .description("mini-douyin接口文档")
-                         .termsOfServiceUrl("http://www.mufiye.com/")
+                         .termsOfServiceUrl("http://www.mufiye-mini-douyin.com/")
                          .contact(new Contact("mufiye", "https://github.com/mufiye", "mufiye140520@gmail.com"))
                          .version("0.1.0")
                          .build())

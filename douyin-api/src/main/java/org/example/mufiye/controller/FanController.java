@@ -1,6 +1,8 @@
 package org.example.mufiye.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@Api(tags = "FanController 粉丝相关业务功能的接口")
+@Api(tags = "FanController 粉丝模块的接口")
 @RequestMapping("fans")
 @RestController
 public class FanController extends BaseInfoProperties {
@@ -28,7 +30,11 @@ public class FanController extends BaseInfoProperties {
     @Autowired
     private FanService fanService;
 
-    @ApiOperation("取消关注")
+    @ApiOperation("关注某一个用户")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "myId", value = "我的用户id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "vlogerId", value = "关注的用户的id", required = true, paramType = "query", dataType="String")
+    })
     @PostMapping("follow")
     public GraceJSONResult follow(@RequestParam String myId,
                                   @RequestParam String vlogerId) {
@@ -60,6 +66,11 @@ public class FanController extends BaseInfoProperties {
         return GraceJSONResult.ok();
     }
 
+    @ApiOperation("取消关注某一个用户")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "myId", value = "我的用户id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "vlogerId", value = "要取消关注的用户的id", required = true, paramType = "query", dataType="String")
+    })
     @PostMapping("cancel")
     public GraceJSONResult cancel(@RequestParam String myId,
                                   @RequestParam String vlogerId) {
@@ -76,6 +87,11 @@ public class FanController extends BaseInfoProperties {
         return GraceJSONResult.ok();
     }
 
+    @ApiOperation("查询我是否关注了某一个用户")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "myId", value = "我的用户id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "vlogerId", value = "关注的用户的id", required = true, paramType = "query", dataType="String")
+    })
     @GetMapping("queryDoIFollowVloger")
     public GraceJSONResult queryDoIFollowVloger(@RequestParam String myId,
                                                 @RequestParam String vlogerId) {
@@ -83,6 +99,12 @@ public class FanController extends BaseInfoProperties {
         return GraceJSONResult.ok(fanService.queryDoIFollowVloger(myId, vlogerId));
     }
 
+    @ApiOperation("查询我的关注列表")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "myId", value = "我的用户id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "page", value = "现在所在的页号", required = true, paramType = "query", dataType="Integer"),
+        @ApiImplicitParam(name = "pageSize", value = "页面大小，也就是一页可以容纳多少item", required = true, paramType = "query", dataType="Integer")
+    })
     @GetMapping("queryMyFollows")
     public GraceJSONResult queryMyFollows(@RequestParam String myId,
                                           @RequestParam Integer page,
@@ -90,6 +112,12 @@ public class FanController extends BaseInfoProperties {
         return GraceJSONResult.ok(fanService.queryMyFollows(myId, page, pageSize));
     }
 
+    @ApiOperation("查询我的粉丝列表")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "myId", value = "我的用户id", required = true, paramType = "query", dataType="String"),
+        @ApiImplicitParam(name = "page", value = "现在所在的页号", required = true, paramType = "query", dataType="Integer"),
+        @ApiImplicitParam(name = "pageSize", value = "页面大小，也就是一页可以容纳多少item", required = true, paramType = "query", dataType="Integer")
+    })
     @GetMapping("queryMyFans")
     public GraceJSONResult queryMyFans(@RequestParam String myId,
                                           @RequestParam Integer page,

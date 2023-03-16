@@ -1,6 +1,9 @@
 package org.example.mufiye.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.example.mufiye.base.BaseInfoProperties;
@@ -25,13 +28,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
-@Api(tags = "User Info Controller")
+@Api(tags = "User Info Controller 用户个人信息模块的接口")
 @RequestMapping("userInfo")
 @RestController
 public class UserInfoController extends BaseInfoProperties {
     @Autowired
     private UserService userService;
 
+    @ApiOperation("查询用户信息")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType="String")
+    })
     @GetMapping("query")
     public Object query(@RequestParam String userId) {
         DyUser user = userService.getUser(userId);
@@ -75,6 +82,11 @@ public class UserInfoController extends BaseInfoProperties {
         return GraceJSONResult.ok(usersVO);
     }
 
+    @ApiOperation("修改用户信息")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "updatedDyUserBo", value = "想要修改为的个人信息", required = true, paramType = "body"),
+        @ApiImplicitParam(name = "type", value = "指修改的是哪种个人信息", required = true, paramType = "query", dataType="Integer")
+    })
     @PostMapping("modifyUserInfo")
     public GraceJSONResult modifyUserInfo(@RequestBody UpdatedDyUserBo updatedDyUserBo,
                                           @RequestParam Integer type) throws Exception{
@@ -86,6 +98,12 @@ public class UserInfoController extends BaseInfoProperties {
     @Autowired
     private MinIOConfig minIOConfig;
 
+    @ApiOperation("修改头像或背景图片")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType = "String"),
+        @ApiImplicitParam(name = "type", value = "修改头像还是背景", required = true, paramType = "query", dataType="Integer"),
+        @ApiImplicitParam(name = "file", value = "上传的图片文件", required = true, paramType = "formData")
+    })
     @PostMapping("modifyImage")
     public GraceJSONResult modifyImage(@RequestParam String userId,
                                        @RequestParam Integer type,

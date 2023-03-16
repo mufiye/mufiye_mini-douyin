@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@Api(tags = "hello Controller")
+@Api(tags = "Test Sms Controller 测试短信业务的接口")
 @RestController
 @RefreshScope  // 刷新配置
 public class HelloController {

@@ -1,6 +1,9 @@
 package org.example.mufiye.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +34,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@Api(tags = "")
+@Api(tags = "Passport Controller 用户登录注册模块的接口")
 @RequestMapping("passport")
 @RestController()
 public class PassportController extends BaseInfoProperties {
@@ -41,6 +44,10 @@ public class PassportController extends BaseInfoProperties {
     @Autowired
     private UserService userService;
 
+    @ApiOperation("获取短信验证码")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "mobile", value = "手机号", required = true, paramType = "query", dataType="String")
+    })
     @PostMapping("getSMSCode")
     public Object getSMSCode(@RequestParam String mobile, HttpServletRequest request) throws Exception {
         if (StringUtils.isBlank(mobile)) {
@@ -65,6 +72,10 @@ public class PassportController extends BaseInfoProperties {
         return GraceJSONResult.ok();
     }
 
+    @ApiOperation("用户登录")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "registerLoginBo", value = "用户登录或者注册的信息", required = true, paramType = "body")
+    })
     @PostMapping("login")
     public GraceJSONResult login(@Valid @RequestBody RegisterLoginBo registerLoginBo,
                                  // BindingResult bindingResult,  // 这样会有侵入性，改为异常处理
@@ -109,6 +120,10 @@ public class PassportController extends BaseInfoProperties {
         return map;
     }
 
+    @ApiOperation("用户登出")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "query", dataType="String")
+    })
     @PostMapping("logout")
     public GraceJSONResult logout(@RequestParam String userId,
                                   HttpServletRequest request) throws Exception {
