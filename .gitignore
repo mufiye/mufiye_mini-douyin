@@ -39,3 +39,6 @@ build/
 
 ### idea ###
 .idea
+
+### tencentcloud ###
+tencentcloud.properties
