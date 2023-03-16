@@ -248,7 +248,7 @@ public class VlogController extends BaseInfoProperties {
         return GraceJSONResult.ok(gridResult);
     }
 
-    @ApiOperation("用户查看自己的关注用户列表")
+    @ApiOperation("用户查看自己的关注用户的视频列表")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "myId", value = "用户自己的id", required = true, paramType = "query", dataType = "String"),
         @ApiImplicitParam(name = "page", value = "页号", required = true, paramType = "query", dataType = "Integer"),
@@ -273,7 +273,7 @@ public class VlogController extends BaseInfoProperties {
         return GraceJSONResult.ok(gridResult);
     }
 
-    @ApiOperation("用户查看自己的朋友(互相关注)列表")
+    @ApiOperation("用户查看自己的朋友的视频列表")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "myId", value = "用户自己的id", required = true, paramType = "query", dataType = "String"),
         @ApiImplicitParam(name = "page", value = "页号", required = true, paramType = "query", dataType = "Integer"),

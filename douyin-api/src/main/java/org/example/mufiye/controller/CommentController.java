@@ -67,7 +67,7 @@ public class CommentController extends BaseInfoProperties {
         return GraceJSONResult.ok(Integer.valueOf(countsStr));
     }
 
-    @ApiOperation("查询我的粉丝列表")
+    @ApiOperation("查看某条视频的评论")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "vlogId", value = "视频id", required = true, paramType = "query", dataType="String"),
         @ApiImplicitParam(name = "userId", value = "用户id", required = false, paramType = "query", dataType="String"),
