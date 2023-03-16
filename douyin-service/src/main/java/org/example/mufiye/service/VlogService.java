@@ -1,6 +1,7 @@
 package org.example.mufiye.service;
 
 import org.example.mufiye.bo.VlogBo;
+import org.example.mufiye.pojo.Vlog;
 import org.example.mufiye.utils.PagedGridResult;
 import org.example.mufiye.vo.IndexVlogVo;
 
@@ -59,4 +60,9 @@ public interface VlogService {
      * 用户获取其关注博主的视频列表
      */
     public PagedGridResult getMyFriendVlogList(String myId, Integer page, Integer pageSize);
+
+    public Vlog getVlog(String id);
+
+    // 将点赞数从redis存储到数据库中
+    public void flushCounts(String vlogId, Integer counts);
 }

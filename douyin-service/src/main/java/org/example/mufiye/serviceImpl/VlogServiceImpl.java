@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.example.mufiye.base.BaseInfoProperties;
 import org.example.mufiye.bo.VlogBo;
+import org.example.mufiye.enums.MessageEnum;
 import org.example.mufiye.enums.YesOrNo;
 import org.example.mufiye.mapper.FanMapper;
 import org.example.mufiye.mapper.MyLikedVlogMapper;
@@ -16,6 +17,7 @@ import org.example.mufiye.mapper.VlogMapperCustom;
 import org.example.mufiye.pojo.MyLikedVlog;
 import org.example.mufiye.pojo.Vlog;
 import org.example.mufiye.service.FanService;
+import org.example.mufiye.service.MsgService;
 import org.example.mufiye.service.VlogService;
 import org.example.mufiye.utils.PagedGridResult;
 import org.example.mufiye.vo.IndexVlogVo;
@@ -39,6 +41,9 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
 
     @Autowired
     private FanService fanService;
+
+    @Autowired
+    private MsgService msgService;
 
     @Autowired
     private Sid sid;
@@ -163,6 +168,18 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         likedVlog.setUserId(userId);
 
         myLikedVlogMapper.insert(likedVlog);
+
+        // 系统消息提示：点赞短视频
+        Vlog vlog = this.getVlog(vlogId);
+        Map msgContent = new HashMap<>();
+        msgContent.put("vlogId", vlogId);
+        msgContent.put("vlogCover", vlog.getCover());
+
+        msgService.createMsg(userId, vlog.getVlogerId(), MessageEnum.LIKE_VLOG.type, msgContent);
+    }
+
+    public Vlog getVlog(String id) {
+        return vlogMapper.selectByPrimaryKey(id);
     }
 
     @Transactional
@@ -255,5 +272,15 @@ public class VlogServiceImpl extends BaseInfoProperties implements VlogService {
         v.setLikeCounts(getVlogBeLikedCounts(vlogId));
 
         return v;
+    }
+
+    @Transactional
+    @Override
+    public void flushCounts(final String vlogId, final Integer counts) {
+        Vlog vlog = new Vlog();
+        vlog.setId(vlogId);
+        vlog.setLikeCounts(counts);
+
+        vlogMapper.updateByPrimaryKeySelective(vlog);
     }
 }

@@ -5,6 +5,8 @@ server:
     max-swallow-size: -1   # tomcat默认的文件大小为2M，超过2M不会被捕获
 
 spring:
+#  application:
+#    name: mufiye-mini-douyin
   profiles:
     active: dev
   servlet:

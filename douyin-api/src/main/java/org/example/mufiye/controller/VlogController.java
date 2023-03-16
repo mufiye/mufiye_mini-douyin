@@ -2,6 +2,7 @@ package org.example.mufiye.controller;
 
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.example.mufiye.base.BaseInfoProperties;
 import org.example.mufiye.bo.VlogBo;
 import org.example.mufiye.enums.YesOrNo;
@@ -10,6 +11,8 @@ import org.example.mufiye.service.VlogService;
 import org.example.mufiye.utils.PagedGridResult;
 import org.example.mufiye.vo.IndexVlogVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "Vlog Controller 视频相关的业务")
 @RequestMapping("vlog")
 @RestController
+@RefreshScope
 public class VlogController extends BaseInfoProperties {
     @Autowired
     VlogService vlogService;
@@ -110,6 +114,9 @@ public class VlogController extends BaseInfoProperties {
         return GraceJSONResult.ok(gridResult);
     }
 
+    @Value("${nacos.counts}")
+    private Integer nacosCounts;
+
     @PostMapping("like")
     public GraceJSONResult like(@RequestParam String userId,
                                 @RequestParam String vlogerId,
@@ -123,6 +130,17 @@ public class VlogController extends BaseInfoProperties {
         // 我点赞过的视频, 需要在redis中保存记录
         redis.set(REDIS_USER_LIKE_VLOG + ":" + userId + ":" + vlogId, "1");
 
+        // 超过一定阈值点赞信息就刷新入库
+        String countsStr = redis.get(REDIS_VLOGER_BE_LIKED_COUNTS + ":" + vlogerId);
+        Integer counts = 0;
+        log.info("nacos配置的count:" + nacosCounts);
+        if (StringUtils.isNotBlank(countsStr)) {
+            counts = Integer.valueOf(countsStr);
+            if(counts >= nacosCounts) {
+                log.info("刷新入库");
+                vlogService.flushCounts(vlogId, counts);
+            }
+        }
         return GraceJSONResult.ok();
     }
 

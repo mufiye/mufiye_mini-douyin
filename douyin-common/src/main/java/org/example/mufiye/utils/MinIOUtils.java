@@ -32,13 +32,17 @@ public class MinIOUtils {
     private static Integer imgSize;
     private static Integer fileSize;
 
-
     private static final String SEPARATOR = "/";
 
     public MinIOUtils() {
     }
 
-    public MinIOUtils(String endpoint, String bucketName, String accessKey, String secretKey, Integer imgSize, Integer fileSize) {
+    public MinIOUtils(String endpoint,
+                      String bucketName,
+                      String accessKey,
+                      String secretKey,
+                      Integer imgSize,
+                      Integer fileSize) {
         MinIOUtils.endpoint = endpoint;
         MinIOUtils.bucketName = bucketName;
         MinIOUtils.accessKey = accessKey;
@@ -70,6 +74,7 @@ public class MinIOUtils {
 
     /**
      * 获取上传文件前缀路径
+     *
      * @return
      */
     public static String getBasisUrl() {
@@ -81,6 +86,7 @@ public class MinIOUtils {
     /**
      * 启动SpringBoot容器的时候初始化Bucket
      * 如果没有Bucket则创建
+     *
      * @throws Exception
      */
     private static void createBucket(String bucketName) throws Exception {
@@ -90,7 +96,8 @@ public class MinIOUtils {
     }
 
     /**
-     *  判断Bucket是否存在，true：存在，false：不存在
+     * 判断Bucket是否存在，true：存在，false：不存在
+     *
      * @return
      * @throws Exception
      */
@@ -98,9 +105,9 @@ public class MinIOUtils {
         return minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
     }
 
-
     /**
      * 获得Bucket的策略
+     *
      * @param bucketName
      * @return
      * @throws Exception
@@ -116,9 +123,9 @@ public class MinIOUtils {
         return bucketPolicy;
     }
 
-
     /**
      * 获得所有Bucket列表
+     *
      * @return
      * @throws Exception
      */
@@ -128,6 +135,7 @@ public class MinIOUtils {
 
     /**
      * 根据bucketName获取其相关信息
+     *
      * @param bucketName
      * @return
      * @throws Exception
@@ -138,6 +146,7 @@ public class MinIOUtils {
 
     /**
      * 根据bucketName删除Bucket，true：删除成功； false：删除失败，文件或已不存在
+     *
      * @param bucketName
      * @throws Exception
      */
@@ -147,11 +156,11 @@ public class MinIOUtils {
 
     /******************************  Operate Bucket End  ******************************/
 
-
     /******************************  Operate Files Start  ******************************/
 
     /**
      * 判断文件是否存在
+     *
      * @param bucketName 存储桶
      * @param objectName 文件名
      * @return
@@ -168,6 +177,7 @@ public class MinIOUtils {
 
     /**
      * 判断文件夹是否存在
+     *
      * @param bucketName 存储桶
      * @param objectName 文件夹名称
      * @return
@@ -191,9 +201,10 @@ public class MinIOUtils {
 
     /**
      * 根据文件前缀查询文件
+     *
      * @param bucketName 存储桶
-     * @param prefix 前缀
-     * @param recursive 是否使用递归查询
+     * @param prefix     前缀
+     * @param recursive  是否使用递归查询
      * @return MinioItem 列表
      * @throws Exception
      */
@@ -214,6 +225,7 @@ public class MinIOUtils {
 
     /**
      * 获取文件流
+     *
      * @param bucketName 存储桶
      * @param objectName 文件名
      * @return 二进制流
@@ -224,13 +236,14 @@ public class MinIOUtils {
 
     /**
      * 断点下载
+     *
      * @param bucketName 存储桶
      * @param objectName 文件名称
-     * @param offset 起始字节的位置
-     * @param length 要读取的长度
+     * @param offset     起始字节的位置
+     * @param length     要读取的长度
      * @return 二进制流
      */
-    public InputStream getObject(String bucketName, String objectName, long offset, long length)throws Exception {
+    public InputStream getObject(String bucketName, String objectName, long offset, long length) throws Exception {
         return minioClient.getObject(
             GetObjectArgs.builder()
                          .bucket(bucketName)
@@ -242,9 +255,10 @@ public class MinIOUtils {
 
     /**
      * 获取路径下文件列表
+     *
      * @param bucketName 存储桶
-     * @param prefix 文件名称
-     * @param recursive 是否递归查找，false：模拟文件夹结构查找
+     * @param prefix     文件名称
+     * @param recursive  是否递归查找，false：模拟文件夹结构查找
      * @return 二进制流
      */
     public static Iterable<Result<Item>> listObjects(String bucketName, String prefix,
@@ -259,9 +273,10 @@ public class MinIOUtils {
 
     /**
      * 使用MultipartFile进行文件上传
-     * @param bucketName 存储桶
-     * @param file 文件名
-     * @param objectName 对象名
+     *
+     * @param bucketName  存储桶
+     * @param file        文件名
+     * @param objectName  对象名
      * @param contentType 类型
      * @return
      * @throws Exception
@@ -280,9 +295,10 @@ public class MinIOUtils {
 
     /**
      * 上传本地文件
+     *
      * @param bucketName 存储桶
      * @param objectName 对象名称
-     * @param fileName 本地文件路径
+     * @param fileName   本地文件路径
      */
     public static ObjectWriteResponse uploadFile(String bucketName, String objectName,
                                                  String fileName) throws Exception {
@@ -297,11 +313,13 @@ public class MinIOUtils {
     /**
      * 通过流上传文件
      *
-     * @param bucketName 存储桶
-     * @param objectName 文件对象
+     * @param bucketName  存储桶
+     * @param objectName  文件对象
      * @param inputStream 文件流
      */
-    public static ObjectWriteResponse uploadFile(String bucketName, String objectName, InputStream inputStream) throws Exception {
+    public static ObjectWriteResponse uploadFile(String bucketName,
+                                                 String objectName,
+                                                 InputStream inputStream) throws Exception {
         return minioClient.putObject(
             PutObjectArgs.builder()
                          .bucket(bucketName)
@@ -312,6 +330,7 @@ public class MinIOUtils {
 
     /**
      * 创建文件夹或目录
+     *
      * @param bucketName 存储桶
      * @param objectName 目录路径
      */
@@ -320,7 +339,7 @@ public class MinIOUtils {
             PutObjectArgs.builder()
                          .bucket(bucketName)
                          .object(objectName)
-                         .stream(new ByteArrayInputStream(new byte[]{}), 0, -1)
+                         .stream(new ByteArrayInputStream(new byte[] {}), 0, -1)
                          .build());
     }
 
@@ -341,8 +360,8 @@ public class MinIOUtils {
     /**
      * 拷贝文件
      *
-     * @param bucketName 存储桶
-     * @param objectName 文件名
+     * @param bucketName    存储桶
+     * @param objectName    文件名
      * @param srcBucketName 目标存储桶
      * @param srcObjectName 目标文件名
      */
@@ -358,6 +377,7 @@ public class MinIOUtils {
 
     /**
      * 删除文件
+     *
      * @param bucketName 存储桶
      * @param objectName 文件名称
      */
@@ -371,8 +391,9 @@ public class MinIOUtils {
 
     /**
      * 批量删除文件
+     *
      * @param bucketName 存储桶
-     * @param keys 需要删除的文件列表
+     * @param keys       需要删除的文件列表
      * @return
      */
     public static void removeFiles(String bucketName, List<String> keys) {
@@ -382,26 +403,32 @@ public class MinIOUtils {
             try {
                 removeFile(bucketName, s);
             } catch (Exception e) {
-                log.error("批量删除失败！error:{}",e);
+                log.error("批量删除失败！error:{}", e);
             }
         });
     }
 
     /**
      * 获取文件外链
+     *
      * @param bucketName 存储桶
      * @param objectName 文件名
-     * @param expires 过期时间 <=7 秒 （外链有效时间（单位：秒））
+     * @param expires    过期时间 <=7 秒 （外链有效时间（单位：秒））
      * @return url
      * @throws Exception
      */
     public static String getPresignedObjectUrl(String bucketName, String objectName, Integer expires) throws Exception {
-        GetPresignedObjectUrlArgs args = GetPresignedObjectUrlArgs.builder().expiry(expires).bucket(bucketName).object(objectName).build();
+        GetPresignedObjectUrlArgs args = GetPresignedObjectUrlArgs.builder()
+                                                                  .expiry(expires)
+                                                                  .bucket(bucketName)
+                                                                  .object(objectName)
+                                                                  .build();
         return minioClient.getPresignedObjectUrl(args);
     }
 
     /**
      * 获得文件外链
+     *
      * @param bucketName
      * @param objectName
      * @return url
@@ -417,6 +444,7 @@ public class MinIOUtils {
 
     /**
      * 将URLDecoder编码转成UTF8
+     *
      * @param str
      * @return
      * @throws UnsupportedEncodingException
@@ -427,7 +455,6 @@ public class MinIOUtils {
     }
 
     /******************************  Operate Files End  ******************************/
-
 
 }
 

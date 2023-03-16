@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.example.mufiye.base.BaseInfoProperties;
+import org.example.mufiye.enums.MessageEnum;
 import org.example.mufiye.enums.YesOrNo;
 import org.example.mufiye.mapper.FanMapper;
 import org.example.mufiye.mapper.FanMapperCustom;
 import org.example.mufiye.pojo.Fan;
 import org.example.mufiye.service.FanService;
+import org.example.mufiye.service.MsgService;
 import org.example.mufiye.utils.PagedGridResult;
 import org.example.mufiye.vo.FanVo;
 import org.example.mufiye.vo.VlogerVo;
@@ -27,6 +29,9 @@ public class FanServiceImpl extends BaseInfoProperties implements FanService {
 
     @Autowired
     private FanMapperCustom fanMapperCustom;
+
+    @Autowired
+    private MsgService msgService;
 
     @Autowired
     private Sid sid;
@@ -50,6 +55,9 @@ public class FanServiceImpl extends BaseInfoProperties implements FanService {
             fan.setIsFanFriendOfMine(YesOrNo.NO.type);
         }
         fanMapper.insert(fan);
+
+        // 系统消息提示：关注
+        msgService.createMsg(userId, vlogerId, MessageEnum.FOLLOW_YOU.type, null);
     }
 
     public Fan queryFanRelationship(String fanId, String vlogerId) {
